@@ -1,10 +1,13 @@
-const MovieDisplay = (props) => {
-  if (props.movie) {
+// destructure the movie prop
+const MovieDisplay = ({ movie }) => {
+  if (movie) {
+    // destructure the properties of the movie object
+    const { Title, Poster, Writer } = movie;
     return (
       <div>
-        <h1>{props.movie.Title}</h1>
-        <img src={props.movie.Poster} alt={props.movie.Title} />
-        <h3>{props.movie.Writer}</h3>
+        <h1>{Title}</h1>
+        <img src={Poster} alt={Title} />
+        <h3>{Writer}</h3>
       </div>
     );
   } else {
