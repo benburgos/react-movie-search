@@ -3,6 +3,7 @@ import MovieDisplay from './components/MovieDisplay';
 import { useState } from 'react';
 
 function App() {
+  const API_KEY = process.env.REACT_APP_API_KEY;
   const [movie, setMovie] = useState(null);
   const getMovie = async (searchTerm) => {
     // making the api call
@@ -17,7 +18,7 @@ function App() {
 
   return (
     <div className="App">
-      <Form getMovie={getMovie}/>
+      <Form getMovie={getMovie} />
       <MovieDisplay movie={movie} />
     </div>
   );
