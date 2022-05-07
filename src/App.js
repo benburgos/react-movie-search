@@ -1,6 +1,6 @@
 import Form from './components/Form';
 import MovieDisplay from './components/MovieDisplay';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
   const API_KEY = process.env.REACT_APP_API_KEY;
@@ -15,6 +15,24 @@ function App() {
     // updating the state to that object
     setMovie(data);
   };
+
+  const randomMovie = () => {
+    const movies = [
+      'Swiss Army Man',
+      'Her',
+      'The Lobster',
+      'Everything Everywhere All At Once',
+      'I Heart Huckabees',
+    ];
+    return movies[Math.floor(Math.random() * movies.length)];
+  };
+
+  // useEffect must ALWAYS have two arguments, a function and an array
+  // the function will run ONCE when the component runs
+  // will ONLY repeat if any value in the array changes
+  useEffect(() => {
+    getMovie(randomMovie());
+  }, []);
 
   return (
     <div className="App">
